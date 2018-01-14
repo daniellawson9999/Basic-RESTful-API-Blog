@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser =  require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index');
+//stores all the posts
 store = {
   posts: [
     {
@@ -16,10 +17,12 @@ store = {
     }
   ]
 };
+//start app
 var app = express();
+//initialize middleware
 app.use(bodyParser.json());
 app.use(morgan('dev'));
-
+//set routes
 app.get('/posts', routes.getPosts);
 app.post('/posts', routes.addPost);
 
